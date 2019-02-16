@@ -11,15 +11,9 @@
 
 BOT_NAME = 'twitter'
 
-PROXY_SERVER = 'https://127.0.0.1:1080'
 
 SPIDER_MODULES = ['twitter.spiders']
 NEWSPIDER_MODULE = 'twitter.spiders'
-
-
-SPLASH_URL = 'http://localhost:8050'
-DUPEFILTER_CLASS = 'scrapy_splash.SplashAwareDupeFilter'
-HTTPCACHE_STORAGE = 'scrapy_splash.SplashAwareFSCacheStorage'
 
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
@@ -56,16 +50,12 @@ ROBOTSTXT_OBEY = False
 # See https://doc.scrapy.org/en/latest/topics/spider-middleware.html
 SPIDER_MIDDLEWARES = {
    # 'twitter.middlewares.TwitterSpiderMiddleware': 543,
-   'scrapy_splash.SplashDeduplicateArgsMiddleware': 100,
 }
 
 # Enable or disable downloader middlewares
 # See https://doc.scrapy.org/en/latest/topics/downloader-middleware.html
 DOWNLOADER_MIDDLEWARES = {
-   'twitter.middlewares.ProxyMiddleware': 99,
-   'scrapy_splash.SplashCookiesMiddleware': 723, 
-   'scrapy_splash.SplashMiddleware': 725,
-   'scrapy.downloadermiddlewares.httpcompression.HttpCompressionMiddleware': 810,
+	'twitter.middlewares.ProxyMiddleware': 543,
 }
 
 

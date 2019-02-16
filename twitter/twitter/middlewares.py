@@ -13,17 +13,13 @@ class ProxyMiddleware(object):
 
     # 改写代理请求
     def process_request(self, request, spider):
-        # request.meta['proxy'] = 'http://127.0.0.1:1080'
-        request.meta['splash']['args']['proxy'] = settings['PROXY_SERVER']
-        return request
+        request.meta['proxy'] = 'http://127.0.0.1:1080'
 
     # 失败重试
     def process_exception(self, request, exception, spider):
-        # self.logger.debug('Try second')
-        # request.meta['proxy'] = 'https://127.0.0.1:1080'
+        self.logger.debug('Try second')
+        request.meta['proxy'] = 'https://127.0.0.1:1080'
         return request
-
-
 
 class TwitterSpiderMiddleware(object):
     # Not all methods need to be defined. If a method is not defined,
