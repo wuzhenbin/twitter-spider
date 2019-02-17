@@ -16,6 +16,10 @@ SPIDER_MODULES = ['twitter.spiders']
 NEWSPIDER_MODULE = 'twitter.spiders'
 
 
+WIN_SHADOWSOCK_PROXY = 'http://127.0.0.1:1080'
+MAC_SHADOWSOCK_PROXY = 'http://127.0.0.1:1087'
+
+
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
 #USER_AGENT = 'twitter (+http://www.yourdomain.com)'
 

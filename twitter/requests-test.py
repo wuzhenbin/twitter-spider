@@ -13,6 +13,11 @@ win_proxies = {
     'https': '127.0.0.1:1080'
 }
 
+mac_proxies = {
+    'http':  'socks5://127.0.0.1:1086',
+    'https': 'socks5://127.0.0.1:1086'
+}
+
 def get_response(url,params={},headers={},proxies={}):
     try:
         response = requests.get(url,params=params,headers=headers,proxies=proxies)
@@ -22,12 +27,12 @@ def get_response(url,params={},headers={},proxies={}):
     except RequestException as e:
         print('err: %s' % e)
 
-html = get_response('https://twitter.com/TheWoodWalker/following',headers=headers,proxies=win_proxies)
-# print(html)
+html = get_response('https://twitter.com/TheWoodWalker/following',headers=headers,proxies=mac_proxies)
 header = pq(html).find('title').text()
 print(header)
-# header = doc('.GridTimeline .Grid-cell')
-# lis = doc('.GridTimeline .Grid-cell')
-# for item in lis:
-#     name = pq(item).find('.fullname').text()
-#     print(name)
+doc = pq(html)
+header = doc('.GridTimeline .Grid-cell')
+lis = doc('.GridTimeline .Grid-cell')
+for item in lis:
+    name = pq(item).find('.fullname').text()
+    print(name)
