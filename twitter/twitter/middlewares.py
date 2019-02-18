@@ -13,12 +13,12 @@ class ProxyMiddleware(object):
 
     # 改写代理请求
     def process_request(self, request, spider):
-        request.meta['proxy'] = spider.settings.get('MAC_SHADOWSOCK_PROXY')
+        request.meta['proxy'] = spider.settings.get('WIN_SHADOWSOCK_PROXY')
 
     # 失败重试
     def process_exception(self, request, exception, spider):
         self.logger.debug('Try second')
-        request.meta['proxy'] = spider.settings.get('MAC_SHADOWSOCK_PROXY')
+        request.meta['proxy'] = spider.settings.get('WIN_SHADOWSOCK_PROXY')
         return request
 
 class TwitterSpiderMiddleware(object):

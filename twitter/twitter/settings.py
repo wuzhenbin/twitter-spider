@@ -12,6 +12,9 @@
 BOT_NAME = 'twitter'
 
 
+MONGO_URL = 'localhost'
+MONGO_DB = 'twitter'
+
 SPIDER_MODULES = ['twitter.spiders']
 NEWSPIDER_MODULE = 'twitter.spiders'
 
@@ -72,9 +75,10 @@ DOWNLOADER_MIDDLEWARES = {
 
 # Configure item pipelines
 # See https://doc.scrapy.org/en/latest/topics/item-pipeline.html
-#ITEM_PIPELINES = {
-#    'twitter.pipelines.TwitterPipeline': 300,
-#}
+ITEM_PIPELINES = {
+   'twitter.pipelines.TwitterPipeline': 300,
+   'twitter.pipelines.MongoPipeline': 310,
+}
 
 # Enable and configure the AutoThrottle extension (disabled by default)
 # See https://doc.scrapy.org/en/latest/topics/autothrottle.html
